@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Akylly Gözegçi - Hasaba almak</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'image/face-detection.png' %}">
+    <style>
+        .btn-primary {
+            margin-left: 175px;
+            width: 500px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+            background-color: #f1e7e7;
+            font-family: 'Times New Roman', cursive;
+            text-align: center;
+            font-size: 36px;
+            display: inline-block;
+            border-radius: 15px;
+        }
+        button:hover {
+            background-color: #04aa6d; /* Green */
+            color: white;
+        }
+        .form-control {
+            width: 500px;
+            font-family: 'Times New Roman', cursive;
+            height: 50px;
+            font-size: 25px;
+            border-radius: 15px;
+        {#box-shadow: -10px -10px 15px rgba(255,255,255,0.5),#}
+        {#10px 10px 15px rgba(70,70,70,0.12);#}
+
+        }
+        h1 {
+            margin-left: 140px;
+            font-size: 2rem;
+            color: #f1e7e7;
+        }
+        .contactList {
+            margin-left: 150px;
+            width: 500px;
+            font-family: 'Times New Roman', cursive;
+            color: #f1e7e7;
+            display: block;
+            font-size: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 1px 2px 0px rgb(4, 170, 109),
+            1px 2px 4px 0px rgb(4, 170, 109),
+            2px 4px 8px 0px rgb(4, 170, 109),
+            2px 4px 16px 0px rgb(4, 170, 109);
+            transform: translateY(-5px);
+            padding: 20px;
+
+        }
+        input[type="file" i]{
+            font-size: 15px;
+            font-family: 'Times New Roman', cursive;
+        }
+        .image{
+            background-image: url("{% static 'image/g.jpg' %}");
+            background-size: cover;
+
+        }
+        .list-group {
+            width: 130px;
+            position: fixed;
+            color: #ff0000;
+            z-index: 1;
+            top: 70px;
+            left: 10px;
+            overflow-x: hidden;
+            padding: 8px 0;
+            box-shadow: 0 0.9rem 1.7rem rgba(0, 0, 0, 0.25),
+            0 0.7rem 0.7rem rgba(0, 0, 0, 0.22);
+            display: block;
+        }
+
+        .list-group a:hover{
+            background-color: #04aa6d;
+            color: rgba(255, 253, 253, 0.6);
+            display: block;
+        }
+        .list-group a {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #f1e7e7;
+        }
+
+    </style>
+</head>
+<body class="image">
+{% include 'navbar.html' %}
+
+<h1>Hasaba almak</h1>
+{#<div class="cold-md-3">#}
+{#    <div class="list-group">#}
+{#        {% for item in categories %}#}
+{#            <p>#}
+{#                <a href="{% url 'category' item.pk %}" class="list-group-item list-group-item-action">{{ item.title }}</a>#}
+{#            </p>#}
+{#        {% endfor %}#}
+{#    </div>#}
+{#</div>#}
+<form action="{% url 'add_detect' %}" enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+
+    <ul class="contactList">
+        {{ form.as_p }}
+    </ul>
+
+    <button type="submit" class="btn-primary">Ýatda saklamak</button>
+</form>
+</body>
+</html>

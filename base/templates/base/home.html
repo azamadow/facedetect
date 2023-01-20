@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'fac.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Akylly Gözegçi - Giriş</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'image/face-detection.png' %}">
+</head>
+<body>
+<div>
+    <style>
+        h5{
+            color: red;
+        }
+        h2{
+            color: black;
+            font-size: 2em;
+            margin-left: 5px;
+            font-family: 'Times New Roman', cursive;
+            margin-right: 5px;
+            text-align: center;
+
+
+        }
+        button{
+            width: 250px;
+            background-color: rgba(0, 0, 0, 0);
+            background-blend-mode: lighten;
+            margin-left: 50px;
+            transition-duration: 4s;
+        }
+        button:hover{
+            background-color: #3642f3; /* Green */
+            color: white;
+        }
+    </style>
+</div>
+
+<div class="container right-panel-active">
+    <div class="container right-panel-active">
+        <div class="container__form container--signup">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <h2 class="form__title">Akylly gözegçi</h2>
+                {% for message in messages %}
+                    <h5>{{ message }}</h5>
+                {% endfor %}
+                <input type="username" name="username" placeholder="Ulanyjynyň ady" class="input" />
+                <input type="password" name="password" placeholder="Gizlin sözüňiz" class="input"/>
+                <button type="submit" class="btn">Tassyklamak</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<script src="{% static 'fac.js' %}"></script>
+</html>

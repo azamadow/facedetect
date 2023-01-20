@@ -1,0 +1,109 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .topnav {
+            overflow: hidden;
+            background-color: #f3f3f3;
+            border: none;
+        }
+
+        img {
+            margin-right: 0px;
+        }
+        .topnav a {
+            float: left;
+            color: #070705;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+            border: none;
+        }
+
+        .topnav a:hover {
+            background-color: #04aa6d;
+            color: #070705;
+        }
+
+        .topnav a.active {
+            background-color: #04AA6D;
+            color: white;
+            text-align: center;
+            width: 375px;
+            background-blend-mode: lighten;
+            font-size: 18px;
+            border: none;
+
+        }
+        .hello{
+            float: right;
+            margin-top: 10px;
+            margin-right: 16px;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+        }
+
+        [type="search"] {
+            font-size: 17px;
+            width: 75%;
+            border-radius: 8px;
+            border: none;
+        }
+        .w3-input {
+            font-size: 17px;
+            background: url("{% static 'image/images.png' %}") no-repeat scroll center;
+            background-size: 17px;
+            opacity: 1;
+            font-family: 'Times New Roman', cursive;
+            border-radius: 8px;
+            border: none;
+        }
+        .shadow{
+            box-shadow: 0px 1px 2px 0px rgb(4, 170, 109),
+            1px 2px 4px 0px rgb(4, 170, 109),
+            2px 4px 8px 0px rgb(4, 170, 109),
+            2px 4px 16px 0px rgb(4, 170, 109);
+            width: 500px;
+            padding: 10px;
+            margin-top: auto;
+            margin-left: auto;
+            border: 3px solid #04a168;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="topnav">
+    <dialog class="shadow">
+        <p>Siz hakykatdan hem ulgamdan çykmak isleýäňizmi?</p>
+        <a href="{% url 'logout' %}">Hawa!</a>
+        <a id='close' href="">Ýok!</a>
+    </dialog>
+    <a class="active" id="show">Ulgamdan çykmak</a>
+    <a href="{% url 'add_detect' %}">Hasaba almak</a>
+    <a href="{% url 'gatnasyk' %}">Gatnaşyk</a>
+    <a href="{% url 'hasaba_almak_sanow' %}">Hasaba alnanlaryň sanawy</a>
+    <form class="hello" method="GET" action="{% url 'search' %}">
+        <input type="search" name="q" placeholder="Gözleg... " />
+        <input class="w3-input" type="submit"  value="    "/>
+    </form>
+</div>
+</body>
+</html>
+<script type = text/javascript>
+    var dialog = document.querySelector('dialog');
+    document.querySelector('#show').onclick = function() {
+        dialog.style.backgroundColor = 'white'
+        dialog.style.textAlign = 'center'
+        dialog.show();
+    };
+    document.querySelector('#close').onclick = function() {
+        dialog.close();
+    };
+</script>
+

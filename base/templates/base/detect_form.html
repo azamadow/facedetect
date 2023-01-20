@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Akylly Gözegçi - Sazlamak</title>
+    {% include 'navbar.html' %}
+    <style>
+        .btn-primary {
+            margin-left: 90px;
+            width: 500px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+            background-color: #f1e7e7;
+            font-family: 'Times New Roman', cursive;
+            text-align: center;
+            font-size: 35px;
+            display: inline-block;
+            border-radius: 15px;
+        }
+        button:hover {
+            background-color: #04aa6d; /* Green */
+            color: white;
+        }
+
+        h1{
+            font-size: 34px;
+            margin-left: 50px;
+        }
+        p {
+            width: 500px;
+            margin-left: 10px;
+            margin-top: 5px;
+            font-family: 'Times New Roman', cursive;
+            color: #070705;
+            display: block;
+            font-size: 20px;
+            border-radius: 15px;
+        }
+        input[type=text], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            font-family: 'Times New Roman', cursive;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            box-sizing: border-box;
+            font-size: 20px;
+        }
+        ul {
+            margin-left: 50px;
+            box-shadow: 0px 1px 2px 0px rgb(4, 170, 109),
+            1px 2px 4px 0px rgb(4, 170, 109),
+            2px 4px 8px 0px rgb(4, 170, 109),
+            2px 4px 16px 0px rgb(4, 170, 109);
+            width: 550px;
+            padding: 10px;
+        }
+        .image{
+            background-image: url("{% static 'image/a.jpg' %}");
+            background-size: cover;
+
+        }
+        .col{
+            margin-left: 50px;
+            width: 10px;
+        }
+    </style>
+</head>
+<body class="image">
+<h1>Sazlamak</h1>
+<table>
+    <tr>
+        <td> <form enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            <ul class="contactList">
+                {{ form.as_p }}
+            </ul>
+            <button type="submit" style="mask-type: unset" class="btn-primary">Täzelemek</button>
+        </form></td>
+        <td><div class="col">
+            <img src="{{ object.photo.url }}">
+        </div></td>
+    </tr>
+</table>
+</body>
+</html>
